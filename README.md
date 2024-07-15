@@ -1,4 +1,4 @@
-**English Center Management System Project**
+English Center Management System Project\\
 In this project, I developed an English center management system with the main functions as follows:
 **For students:**
   •	View class and course schedules.
