@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewData["Title"] = "Chitietlop";
+    Layout = "~/Views/Shared/LayoutTeacher.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- google fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+<!-- my css file-->
+<link rel="stylesheet" type="text/css" href="videochat2.css">
+<script src='https://meet.jit.si/external_api.js'></script>
+@model IEnumerable<DA_Framewrok.Models.Lichhoccualop>
+<div class="container py-3">
+    <div class="row">
+        <div class="col-12 py-3">
+            <div class="section-title">
+                <h1 class="display-4 fw-semibold text-center" style="color:white; padding-top: 30px;">
+                    Khóa học đang dạy
+                </h1>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="bg-light rounded p-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item ">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#all">Đang dạy</a>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-12 py-2" style="margin-top: 35px;">
+                        <div class="section-title">
+                            <h1 class="display-6 fw-semibold text-center"> Thông tin chi tiết </h1>
+                        </div>
+                    </div>
+                    <div class="container ps-5">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:80px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder pt-3" style="color: white;"> Mã khóa học</a>
+                                </div>
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Lịch học khóa học </a>
+                                </div>
+
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Ngày lớp học bắt đầu </a>
+                                </div> <div class="row rounded text-center"
+                                            style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Ngày lớp học kết thúc </a>
+                                </div>
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Danh sách học viên </a>
+                                </div>
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Thông báo lớp học </a>
+                                </div>
+                                <div class="row rounded text-center"
+                                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px;">
+                                    <a class="fs-5 fw-bolder" style="color: white;"> Bắt đầu dạy! </a>
+                                </div>
+                            </div>
+                            <div class="col-auto"> </div>
+                            <div class="col-lg-8">
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:80px; padding-top: 23px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a class="fs-5" style="color:#000000"> @Model.FirstOrDefault().MalophocNavigation.Tenlophoc</a>
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a class="fs-5" style="color:#000000">
+                                        @foreach(var item in Model)
+                                        {
+                                            <span>@item.Thu, </span>
+
+                                        }    
+                                        Từ @Model.FirstOrDefault().Giobatdau - đến @Model.FirstOrDefault().Gioketthuc
+                                    </a>
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a class="fs-5" style="color:#000000"> @Model.FirstOrDefault().MalophocNavigation.Thoigianbatdau?.ToString("dd-MM-yyyy")</a>
+
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a class="fs-5" style="color:#000000"> @Model.FirstOrDefault().MalophocNavigation.Thoigianketthuc?.ToString("dd-MM-yyyy")</a>
+
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a asp-controller="ChiTietHocVien" asp-action="DanhSachHocVien" asp-route-malophoc="@Model.FirstOrDefault().Malophoc" class="fs-5" style="color:#000000"> Xem chi tiết >>></a>
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a asp-controller="Thongbaolop" asp-action="Thongtinlop" asp-route-malophoc="@Model.FirstOrDefault().Malophoc" class="fs-5" style="color:#000000"> Xem chi tiết >>></a>
+                                </div>
+                                <div class="row rounded"
+                                     style="background-color: rgba(109, 195, 161, 0.28); height:50px; padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                                    <a asp-controller="Hoconline" asp-action="index"  class="fs-5" style="color:#000000"> Mớ lớp >>></a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+    </div>
+</div>
+    <script>
+        var button = document.querySelector('#start');
+        var container = document.querySelector('#jitsi-container');
+        var api = null;
+
+        button.addEventListener('click', () => {
+            var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var stringLength = 30;
+
+            function pickRandom() {
+                return possible[Math.floor(Math.random() * possible.length)];
+            }
+
+            var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+            var domain = "meet.jit.si";
+            var options = {
+                "roomName": randomString,
+                "parentNode": container,
+                "width": 600,
+                "height": 600,
+            };
+            api = new JitsiMeetExternalAPI(domain, options);
+            console.log(domain);
+            console.log(options.roomName);
+
+           
+        });
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>

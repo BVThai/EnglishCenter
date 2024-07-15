@@ -1,0 +1,78 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Khoahocchitiet>
+
+@{
+    ViewData["Title"] = "DanhSachChiTietKhoa";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>DanhSachChiTietKhoa</h1>
+
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+    </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+    </div>
+}
+<div class="table-responsive">
+    <table class="table table-bordered">
+    <thead>
+        <tr class="table-danger">
+            <th>
+                @Html.DisplayNameFor(model => model.Makhoahoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doituong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thoiluongkhoahoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muctieu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Noidung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MakhoahocNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table-primary">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Makhoahoc)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doituong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thoiluongkhoahoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Muctieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Noidung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MakhoahocNavigation.Tenkhoahoc)
+            </td>
+            <td>
+                <a asp-action="SuaKhoaHocChiTiet" asp-route-makhoahoc="@item.Makhoahoc">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Makhoahoc">Details</a> |
+                <a asp-action="XoaKhoaHocChiTiet" asp-route-makhoahoc="@item.Makhoahoc">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

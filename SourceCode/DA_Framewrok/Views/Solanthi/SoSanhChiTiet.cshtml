@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "SoSanhChiTiet";
+    Layout = "~/Views/Shared/LayoutStudent.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Purple Admin</title>
+<!-- plugins:css -->
+<link rel="stylesheet" href="../../AdminLayout/assets//vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="../../AdminLayout/assets//vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="../../AdminLayout/assets//css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="../../AdminLayout/assets//images/favicon.ico" />
+@model IEnumerable<DA_Framewrok.Models.Cautraloi>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 py-3">
+            <div class="section-title">
+                <h1 class="display-4 fw-semibold text-center"
+                    style="color:#4e57d4; padding-top: 100px;">
+                    Đáp án chi tiết
+                </h1>
+                <div class="line"></div>
+            </div>
+           
+        </div>
+        <div class="col-12 ">
+            <div class="bg-white rounded p-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item ">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#all">Ngày thi: @Model.FirstOrDefault()?.MalanthiNavigation.Ngaythi?.ToString("dd-MM-yyyy")</a>
+
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content p-4 ">
+                            <div id="all" class="tab-pane fade in active show">
+                                <div class="row table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="table-warning">
+                                                <th >Question</th>
+                                                <th >Your Answer</th>
+                                                <th >Correct Answer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model){
+                                                <tr class="@((item.Cautraloi1 == item.MacauhoiNavigation.Dapan) ? "table-success" : "table-danger")">
+                                                    <td> @item.MacauhoiNavigation.De</td>
+                                                    <td>@item.Cautraloi1</td>
+                                                    <td>@item.MacauhoiNavigation.Dapan</td>
+                                                  
+                                                    
+                                                </tr>
+                                            }
+                                             
+                                            <tr class="table-info">
+                                                <td colspan="2" style="font-weight: bold; font-size: 20px;">Total score</td>
+                                                <td style="font-weight: bold; font-size: 20px;">@(Model.LastOrDefault()?.MalanthiNavigation?.Socaudung*10)</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Hocvienthuoclophoc>
+
+@{
+    ViewData["Title"] = "DanhSachHocVienThuocLop";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách tất cả học viên tham gia các lớp học</h1>
+
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+    </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr class="table-danger">
+            <th>
+                Tên học viên
+            </th>
+            <th>
+                Tên khóa học
+            </th>
+            <th>
+                Tên lớp học
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table-primary">
+            <td>
+                @Html.DisplayFor(modelItem => item.MahocvienNavigation.Tenhocvien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MakhoahocNavigation.Tenkhoahoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MalophocNavigation.Tenlophoc)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "SuaHocVienThuocLop", new { mahocvien = item.Mahocvien, makhoahoc = item.Makhoahoc, malophoc = item.Malophoc }) |
+                    
+                    @Html.ActionLink("Delete", "XoaHocVienThuocLop", new { mahocvien = item.Mahocvien, makhoahoc = item.Makhoahoc, malophoc = item.Malophoc })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

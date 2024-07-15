@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "SoSanhChiTiet";
+    Layout = "~/Views/Shared/LayoutStudent.cshtml";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Purple Admin</title>
+<!-- plugins:css -->
+<link rel="stylesheet" href="../../AdminLayout/assets//vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="../../AdminLayout/assets//vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="../../AdminLayout/assets//css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="../../AdminLayout/assets//images/favicon.ico" />
+@model IEnumerable<DA_Framewrok.Models.Hocvienthuoclophoc>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12 py-3">
+            <div class="section-title">
+                <h1 class="display-4 fw-semibold text-center"
+                    style="color:#4e57d4; padding-top: 100px;">
+                   Thời khóa biểu
+                </h1>
+                <div class="line"></div>
+            </div>
+
+        </div>
+        <div class="col-12 ">
+            <div class="bg-white rounded p-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item ">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#all">Thời khóa biểu</a>
+
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="tab-content p-4 ">
+                            <div id="all" class="tab-pane fade in active show">
+                                <div class="row table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="table-warning">
+                                                <th></th>
+                                                @foreach (var thu in new List<string> { "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật" })
+                                                {
+                                                    <th>@thu</th>
+                                                }
+                                                <th>Thời gian bắt đầu</th>
+                                                <th>Thời gian kết thúc</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var lophoc in Model)
+                                            {
+                                                <tr>
+                                                    <td>@lophoc.MalophocNavigation.Tenlophoc</td>
+                                                   
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

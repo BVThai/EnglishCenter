@@ -1,0 +1,54 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Quantrivien>
+
+@{
+    ViewData["Title"] = "DanhSachQuanTriVien";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách quản trị viên</h1>
+
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+    </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+    </div>
+}
+<div class="table-responsive">
+    <table class="table table-bordered">
+    <thead>
+        <tr class="table-danger">
+            <th>
+                @Html.DisplayNameFor(model => model.Taikhoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matkhau)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class = "table-primary">
+            <td>
+                @Html.DisplayFor(modelItem => item.Taikhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>
+            <td>
+                <a asp-action="SuaQuanTriVien" asp-route-maquantrivien="@item.Maquantrivien">Edit</a> |
+               
+                <a asp-action="XoaQuanTriVien" asp-route-maquantrivien="@item.Maquantrivien">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

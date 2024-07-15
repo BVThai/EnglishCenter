@@ -1,0 +1,63 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DA_Framewrok.Models.Lophoc
+
+@{
+    ViewData["Title"] = "SuaLopHoc";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Lớp học</h1>
+
+<h4>Chỉnh sửa lớp học</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SuaLopHoc">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Malophoc" />
+            <div class="form-group">
+                <label asp-for="Tenlophoc" class="control-label"></label>
+                <input asp-for="Tenlophoc" class="form-control" />
+                <span asp-validation-for="Tenlophoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thoigianbatdau" class="control-label"></label>
+                <input asp-for="Thoigianbatdau" class="form-control" />
+                <span asp-validation-for="Thoigianbatdau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thoigianketthuc" class="control-label"></label>
+                <input asp-for="Thoigianketthuc" class="form-control" />
+                <span asp-validation-for="Thoigianketthuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Magiaovien" class="control-label"></label>
+                <select asp-for="Magiaovien" class="form-control" asp-items="ViewBag.Magiaovien"></select>
+                <span asp-validation-for="Magiaovien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Makhoahoc" class="control-label"></label>
+                <select asp-for="Makhoahoc" class="form-control" asp-items="ViewBag.Makhoahoc"></select>
+                <span asp-validation-for="Makhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tinhtranglophoc" class="control-label"></label>
+                <input asp-for="Tinhtranglophoc" class="form-control" />
+                <span asp-validation-for="Tinhtranglophoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Siso" class="control-label"></label>
+                <input asp-for="Siso" class="form-control" />
+                <span asp-validation-for="Siso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

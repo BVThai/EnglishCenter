@@ -1,0 +1,66 @@
+/**
+ * @license
+ *
+ * Font Family: Poppins
+ * Designed by: Jonny Pinhorn, Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/poppins
+ * © 2023 Indian Type Foundry
+ *
+ * Font Styles:
+ * Poppins Variable(Variable font)
+ * Poppins Variable Italic(Variable font)
+ * Poppins Thin
+ * Poppins Thin Italic
+ * Poppins Extra Light
+ * Poppins Extra Light Italic
+ * Poppins Light
+ * Poppins Light Italic
+ * Poppins Regular
+ * Poppins Italic
+ * Poppins Medium
+ * Poppins Medium Italic
+ * Poppins Semi Bold
+ * Poppins Semi Bold Italic
+ * Poppins Bold
+ * Poppins Bold Italic
+ * Poppins Extra Bold
+ * Poppins Extra Bold Italic
+ * Poppins Black
+ * Poppins Black Italic
+ *
+*/
+
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 100.0;
+*
+* available axes:
+
+* 'wght' (range from 100.0 to 900.0)
+
+*/
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Variable.woff2') format('woff2'),
+       url('../fonts/Poppins-Variable.woff') format('woff'),
+       url('../fonts/Poppins-Variable.ttf') format('truetype');
+       font-weight: 100 900;
+       font-display: swap;
+       font-style: normal;
+}
+
+
+/**
+* This is a variable font
+* You can controll variable axes as shown below:
+* font-variation-settings: 'wght' 100.0;
+*
+* available axes:
+
+* 'wght' (range from 100.0 to 900.0)
+
+*/
+

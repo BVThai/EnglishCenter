@@ -1,0 +1,97 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Giaovien>
+
+@{
+    ViewData["Title"] = "DanhSachGiaoVien";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách giáo viên</h1>
+
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+    </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+    </div>
+}
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-danger">
+                <th>
+                   Tên giáo viên
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Quốc tịch
+                </th>
+                <th>
+                    Ảnh đại diện
+               
+                </th>
+                <th>
+                   Mật khẩu
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+                <tr class="table-primary">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tengiaovien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sodienthoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quoctich)
+                </td>
+                <td>
+                     <img src="~/@item.Anhdaidien" style="height: auto !important; width:100px !important ; border-radius:0px !important" alt="Teacher Image" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matkhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tinhtrang)
+                </td>
+                <td>
+                    <a asp-action="SuaGiaoVien" asp-route-magiaovien="@item.Magiaovien">Edit</a> |
+                   
+                    <a asp-action="XoaGiaoVien" asp-route-magiaovien="@item.Magiaovien">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

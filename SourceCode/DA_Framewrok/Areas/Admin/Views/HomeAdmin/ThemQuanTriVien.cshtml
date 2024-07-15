@@ -1,0 +1,44 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DA_Framewrok.Models.Quantrivien
+
+@{
+    ViewData["Title"] = "ThemQuanTriVien";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Quản trị viên</h1>
+
+<h4>Thêm quản trị viên</h4>
+<hr />
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="ThemQuanTriVien">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Taikhoan" class="control-label"></label>
+                <input asp-for="Taikhoan" class="form-control" />
+                <span asp-validation-for="Taikhoan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Matkhau" class="control-label"></label>
+                <input asp-for="Matkhau" class="form-control" />
+                <span asp-validation-for="Matkhau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

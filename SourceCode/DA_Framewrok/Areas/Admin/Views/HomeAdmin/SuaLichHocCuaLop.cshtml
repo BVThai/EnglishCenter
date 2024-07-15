@@ -1,0 +1,68 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DA_Framewrok.Models.Lichhoccualop
+
+@{
+    ViewData["Title"] = "SuaLichHocCuaLop";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Lịch học lớp</h1>
+
+<h4>Chỉnh sửa lịch học của lớp</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="SuaLichHocCuaLop">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Malichhoc" />
+            <div class="form-group">
+                <label asp-for="Makhoahoc" class="control-label"></label>
+                <select asp-for="Makhoahoc" class="form-control" asp-items="ViewBag.Makhoahoc"></select>
+                <span asp-validation-for="Makhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Malophoc" class="control-label"></label>
+                <select asp-for="Malophoc" class="form-control" asp-items="ViewBag.Malophoc"></select>
+                <span asp-validation-for="Malophoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thu" class="control-label"></label>
+                <select asp-for="Thu" asp-items="GetThuItems()" class="form-control"></select>
+                <span asp-validation-for="Thu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Giobatdau" class="control-label"></label>
+                <input type="time" asp-for="Giobatdau" class="form-control" />
+                <span asp-validation-for="Giobatdau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gioketthuc" class="control-label"></label>
+                <input type="time" asp-for="Gioketthuc" class="form-control" />
+                <span asp-validation-for="Gioketthuc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@{
+    List<SelectListItem> GetThuItems()
+    {
+        return new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Thu hai", Text = "Thứ hai" },
+            new SelectListItem { Value = "Thu ba", Text = "Thứ ba" },
+            new SelectListItem { Value = "Thu tu", Text = "Thứ tư" },
+            new SelectListItem { Value = "Thu nam", Text = "Thứ năm" },
+            new SelectListItem { Value = "Thu sau", Text = "Thứ sáu" },
+            new SelectListItem { Value = "Thu bay", Text = "Thứ bảy" },
+            new SelectListItem { Value = "Chu nhat", Text = "Chủ nhật" }
+            
+        };
+    }
+}

@@ -1,0 +1,136 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DA_Framewrok.Models.Giaovien
+@using System.Collections.Generic;
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@{
+    ViewData["Title"] = "ThemGiaoVien";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Giáo Viên</h1>
+
+<h4>Thêm giáo viên</h4>
+<hr />
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<div class="row" >
+    <div class="col-md-4">
+        <form method="post" asp-action="ThemGiaoVien" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Tengiaovien" class="control-label"></label>
+                <input asp-for="Tengiaovien" class="form-control" />
+                <span asp-validation-for="Tengiaovien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diachi" class="control-label"></label>
+                <input asp-for="Diachi" class="form-control" />
+                <span asp-validation-for="Diachi" class="text-danger"></span>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+            <!-- Include Flatpickr -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css" />
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
+
+            <div class="form-group">
+                <label asp-for="Ngaysinh" class="control-label"></label>
+                <input asp-for="Ngaysinh" class="form-control" id="datepicker" />
+                <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    flatpickr("#datepicker", {
+                        dateFormat: "Y-m-d",
+
+                        onChange: function (selectedDates, dateStr, instance) {
+                            $("#datepicker").val(dateStr);
+                        }
+                    });
+                });
+            </script>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sodienthoai" class="control-label"></label>
+                <input asp-for="Sodienthoai" class="form-control" />
+                <span asp-validation-for="Sodienthoai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quoctich" class="control-label"></label>
+                <select asp-for="Quoctich" asp-items="GetQuocTichItems()" class="form-control"></select>
+                <span asp-validation-for="Quoctich" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anhdaidien" class="control-label"></label>
+                <input asp-for="Anhdaidien" type="file" class="form-control" />
+                <span asp-validation-for="Anhdaidien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Matkhau" class="control-label"></label>
+                <input asp-for="Matkhau" class="form-control" />
+                <span asp-validation-for="Matkhau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tinhtrang" class="control-label"></label>
+                <select asp-for="Tinhtrang" asp-items="GetTinhTrangItems()" class="form-control"></select>
+                <span asp-validation-for="Tinhtrang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@{
+    List<SelectListItem> GetQuocTichItems()
+    {
+        var quocGiaItems = new List<SelectListItem>();
+
+        foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
+        {
+            RegionInfo region = new RegionInfo(ci.Name);
+
+            // Lọc chỉ lấy quốc gia
+            if (region.Name.Length == 2)
+            {
+                var quocGiaItem = new SelectListItem
+                        {
+                            Value = region.DisplayName,
+                            Text = region.DisplayName
+                        };
+
+                quocGiaItems.Add(quocGiaItem);
+            }
+        }
+
+        return quocGiaItems;
+    }
+    }
+}
+@{
+    List<SelectListItem> GetTinhTrangItems()
+    {
+        return new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Active", Text = "Active" },
+            new SelectListItem { Value = "Inactive", Text = "Inactive" }
+        };
+    }
+}

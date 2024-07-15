@@ -1,0 +1,137 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/views/shared/layoutstudent.cshtml";
+}
+@model PaymentViewModel
+<section class="container section-padding">
+    <main>
+        <div class="py-5 text-center">
+            <h2 style="color:#4e57d4">Thanh toán</h2>
+            <p class="lead">Hoàn thành đơn thanh toán sau để trải nghiệm đầy đủ khóa học của ZenLish</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Khóa học được chọn</span>
+                    <span class="badge bg-primary rounded-pill">1</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                        <div>
+                            <h6 class="my-0">@Model.ThongTinKhoaHoc.Tenkhoahoc</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">@string.Format("{0:N0}", Model.ThongTinKhoaHoc.Giakhoahoc) VND</span>
+                    </li>
+                    
+                    
+                    
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Tổng tiền (VND)</span>
+                        <strong>@string.Format("{0:N0}", Model.ThongTinKhoaHoc.Giakhoahoc) VND</strong>
+                    </li>
+                </ul>
+
+              
+            </div>
+            <div class="col-md-7 col-lg-8">
+               
+                        <div class="col-sm-12">
+                            <label for="firstName" class="form-label">Họ và Tên</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="@Model.ThongTinHocVien.Tenhocvien"  readonly>
+                            <!-- Hidden field for Mahocvien -->
+                            <input type="hidden" id="maHocVien" name="maHocVien" value="@Model.ThongTinHocVien.Mahocvien">
+                            <input type="hidden"  id="giakhoahoc" name="giaKhoaHoc" value="@Model.ThongTinKhoaHoc.Giakhoahoc"/>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Lớp học</label>
+                            @foreach(var lophoc in Model.ThongTinLopHoc)
+                            {
+                                if (lophoc.Tinhtranglophoc != "Da ket thuc")
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input lopHocRadio" type="radio" id="lopHoc-@lophoc.Malophoc" name="lopHocIds" value="@lophoc.Malophoc" data-class-id="@lophoc.Malophoc">
+                                        <label class="form-check-label" for="lopHoc-@lophoc.Malophoc">
+                                            @lophoc.Tenlophoc
+                                            <ul>
+                                                @foreach (var schedule in lophoc.Lichhoccualops)
+                                                {
+                                                    <li>@schedule.Thu - @schedule.Giobatdau - @schedule.Gioketthuc</li>
+                                                }
+                                            </ul>
+                                        </label>
+                                    </div>
+                                }
+                            }
+                        </div>
+                       
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email <span class="text-muted">(Tùy chọn)</span></label>
+                            <input type="email" class="form-control" id="email" placeholder="@Model.ThongTinHocVien.Email" readonly>
+                        </div>
+                        <div class="col-12">
+                            <label for="phonenumber" class="form-label">Số điện thoại </label>
+                        <input type="text" class="form-control" id="sdt" placeholder="@Model.ThongTinHocVien.Sodienthoai" readonly>
+                        </div>
+
+                        <h4 class="pt-3 mt-3 mb-3 border-top">Phương thức thanh toán </h4>
+                        <div class="my-3">
+                            <div class="form-check">
+                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked >
+                                <label class="form-check-label" for="credit">Thẻ ngân hàng</label>
+                            </div>
+                        </div>
+
+                        <div class="row gy-3">
+                            <div class="col-md-6">
+                                <label for="cc-number" class="form-label">Số thẻ</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="" >
+                                <div class="invalid-feedback">
+                                    Credit card number is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-expiration" class="form-label">Hạn sử dụng</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="" >
+                                <div class="invalid-feedback">
+                                    Expiration date required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="">
+                                <div class="invalid-feedback">
+                                    Security code required
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                <a class="w-100 btn btn-primary btn-lg" href="#" id="paymentButton" onclick="submitPayment()">Thanh toán ngay!</a>
+               
+            </div>
+        </div>
+    </main>
+</section>
+<script>
+    function submitPayment() {
+        var selectedClassSchedule = document.querySelector('input[name="lopHocIds"]:checked');
+
+        if (selectedClassSchedule) {
+            var malophoc = selectedClassSchedule.value;
+            var makhoahoc = "@Model.ThongTinKhoaHoc.Makhoahoc"; // Use the appropriate syntax to get makhoahoc from your model
+            var gia = "@Model.ThongTinKhoaHoc.Giakhoahoc"
+            var redirectUrl = `/Payment/ProcessPayment?makhoahoc=${makhoahoc}&malophoc=${malophoc}&giakhoahoc=${gia}`;
+            // Now you can use 'redirectUrl' as needed, for example, redirect to a payment action
+            window.location.href = redirectUrl;
+        } else {
+            alert("Vui lòng chọn lớp học bạn mong muốn!");
+        }
+    }
+</script>

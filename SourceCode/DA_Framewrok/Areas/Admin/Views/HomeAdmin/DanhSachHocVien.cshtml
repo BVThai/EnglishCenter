@@ -1,0 +1,88 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Hocvien>
+
+@{
+    ViewData["Title"] = "DanhSachHocVien";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách học viên</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+    </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+    </div>
+}
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-danger">
+                <th>
+                    Mã học viên
+                </th>
+                <th>
+                    Tên học viên
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                   Số điện thoại
+                </th>
+                <th>
+                    Mật khẩu
+                </th>
+                <th>
+                    Tình trạng
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr class="table-primary">
+                <td>
+                   @Html.DisplayFor(modelItem => item.Mahocvien)
+                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenhocvien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sodienthoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matkhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tinhtrang)
+                </td>
+                <td>
+                
+
+                    <a asp-action="SuaHocVien" asp-route-mahocvien="@item.Mahocvien">Edit</a> |              
+                    <a asp-action="XoaHocVien" asp-route-mahocvien="@item.Mahocvien">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    
+*@
+@{
+    Layout = "~/views/shared/layoutstudent.cshtml";
+}
+@model DA_Framewrok.Models.CourseViewModel
+<section id="blog_area" class="section-padding">
+    <div class="container">
+        <div class="section_heading text-center" style="margin-bottom: 80px;">
+            <h1> Các khóa học <span style="color:#4e57d4"> IELTS </span> </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog_slider_area owl-carousel">
+                    @foreach (var course in Model.IeltsCourses)
+                    {
+                        <div class="box-area">
+                            <div class="single-blog">
+                                <div class="post-img">
+                                    <img style="height: 300px !important;"  src="@course.Anhkhoahoc" alt="">
+                                </div>
+                                <div class="single-blog">
+                                    <a href="#">
+                                        <h3 class="post-title" style="padding-top: 20px; "> @course.Tenkhoahoc </h3>
+                                    </a>
+                                    <p class="blog-text">
+                                        @course.Mota
+                                    </p>
+                                    <p> Giá: <a style="color:chocolate"> @string.Format("{0:N0}", course.Giakhoahoc) VND </a> </p>
+                                    <div class="btn-area">
+                                        <a asp-action="LayChiTietKhoaHoc" asp-route-makhoahoc="@course.Makhoahoc"  class="btn btn-default main_btn" style="background-color: #4e57d4; color: white;"> Đăng ký ngay! </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="blog_area" class="section-padding border-top">
+    <div class="container">
+        <div class="section_heading text-center" style="margin-bottom: 80px;">
+            <h1> Các khóa học <span style="color:#4e57d4"> TOEIC </span> </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog_slider_area owl-carousel">
+                    @foreach (var course in Model.ToeicCourses)
+                    {
+                        <div class="box-area">
+                            <div class="single-blog">
+                                <div class="post-img">
+                                    <img style="height: 300px !important;" src="@course.Anhkhoahoc" alt="">
+                                </div>
+                                <div class="single-blog">
+                                    <a href="#">
+                                        <h3 class="post-title" style="padding-top: 20px; "> @course.Tenkhoahoc </h3>
+                                    </a>
+                                    <p class="blog-text">
+                                        @course.Mota
+                                    </p>
+                                    <p> Giá: <a style="color:chocolate"> @string.Format("{0:N0}", course.Giakhoahoc) VND </a> </p>
+                                    <div class="btn-area">
+                                        <a asp-action="LayChiTietKhoaHoc" asp-route-makhoahoc="@course.Makhoahoc" class="btn btn-default main_btn" style="background-color: #4e57d4; color: white;"> Đăng ký ngay! </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,83 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model DA_Framewrok.Models.Khoahoc
+
+@{
+    ViewData["Title"] = "SuaKhoaHoc";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Khóa học</h1>
+
+<h4>Chỉnh sửa khóa học</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="SuaKhoaHoc" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Makhoahoc" />
+            <div class="form-group">
+                <label asp-for="Tenkhoahoc" class="control-label"></label>
+                <input asp-for="Tenkhoahoc" class="form-control" />
+                <span asp-validation-for="Tenkhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Giakhoahoc" class="control-label"></label>
+                <input asp-for="Giakhoahoc" class="form-control" />
+                <span asp-validation-for="Giakhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mota" class="control-label"></label>
+                <input asp-for="Mota" class="form-control" />
+                <span asp-validation-for="Mota" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thoiluong" class="control-label"></label>
+                <input asp-for="Thoiluong" class="form-control" />
+                <span asp-validation-for="Thoiluong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trangthai" class="control-label"></label>
+                <select asp-for="Trangthai" asp-items="GetTrangThaiItems()" class="form-control"></select>
+                <span asp-validation-for="Trangthai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Anhkhoahoc" class="control-label"></label>
+                <input type="file" asp-for="Anhkhoahoc" class="form-control" />
+                <span asp-validation-for="Anhkhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Loaikhoahoc" class="control-label"></label>
+                <select asp-for="Loaikhoahoc" asp-items="GetLoaiKhoaItems()" class="form-control"></select>
+                <span asp-validation-for="Loaikhoahoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@{
+    List<SelectListItem> GetTrangThaiItems()
+    {
+        return new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Show", Text = "Show" },
+            new SelectListItem { Value = "Hide", Text = "Hide" }
+        };
+    }
+}
+@{
+    List<SelectListItem> GetLoaiKhoaItems()
+    {
+        return new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Ielts", Text = "Ielts" },
+            new SelectListItem { Value = "Toeic", Text = "Toiec" }
+
+        };
+    }
+}

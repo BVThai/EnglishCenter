@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "ThamGiaBuoiHoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Buoihoc
+@* <style>
+    #start {
+        position: absolute;
+        top: 225px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+<div class="row">
+    <div class="col-12 py-3">
+        <div class="section-title">
+            <h1 class="display-4 fw-semibold text-center"
+                style="color:#4e57d4; padding-top: 100px;">
+                @Model.MalophocNavigation.Tenlophoc;
+            </h1>
+            <a href="@($"https://{Model.Domain}/{Model.Options}")" id="start" class="fw-semibold text-center btn btn-outline-primary" type="button"><b>Lớp học đang bắt đầu</b></a>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="col-12 ">
+        <div class="bg-white rounded p-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item ">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#all">Toiec</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-12">
+                    <div class="">
+                        <div id="all" class="tab-pane fade in active show">
+                            <div class="row"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
+<section id="hero" class="min-vh-100 d-flex align-items-center text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 data-aos="fade-left" class="text-uppercase text-white fw-semibold display-1">Lớp học <br> đang bắt đầu</h1>
+                <h5 class="text-white mt-3 mb-4" data-aos="fade-right"> @Model.MalophocNavigation.Tenlophoc</h5>
+                <div data-aos="fade-up" data-aos-delay="50">
+                    <a href="@($"https://{Model.Domain}/{Model.Options}")" class="btn btn-brand me-2">Tham gia!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

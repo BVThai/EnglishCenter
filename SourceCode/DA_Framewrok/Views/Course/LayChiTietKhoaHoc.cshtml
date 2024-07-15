@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/views/shared/layoutstudent.cshtml";
+}
+@model Khoahoc
+<section id="payment" class="min-vh-80 d-flex align-items-center" style="padding-top: 140px; padding-bottom: 140px;">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-6" style="padding-top: 80px;">
+                <h2 data-aos="fade-left" class="text-uppercase text-white fw-semibold">@Model.Tenkhoahoc</h2>
+                <p class="text-white mt-3 mb-4 fs-5" data-aos="fade-right">
+                    @Model.Mota
+                </p>
+            </div>
+            
+            <div class="col-lg-6 rounded" style="background-color: white; padding-bottom: 20px;">
+                <div class="container fs-5 fw-semibold" style="color: black; padding-top: 20px;">
+                    Lớp học đang được mở!
+                    <div class="row">
+                        <p class="fs-6" style="color:gray"> Đăng ký ngay trước ngày ... để đảm bảo được chỗ học của bạn!</p>
+                    </div>
+                    <div class="row rounded" style="height: 55px; background-color: #4e57d4; color: white; padding-top: 10px;">
+                        <a asp-controller="Payment" asp-action="GetPayment" asp-route-makhoahoc="@Model.Makhoahoc" class="text-center rounded" style="background-color: #4e57d4; color: white;">
+                            Mua
+                            ngay
+                        </a>
+                    </div>
+                    <div class="row rounded border border-primary"
+                         style="border-color: #4e57d4; height: 55px; background-color: white; margin-top: 15px; padding-top: 10px;">
+                        <a href="#main-course" class="text-center rounded" style="color:#4e57d4"> Tìm hiểu thêm </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="main-course" class="align-items-center" style="padding-top: 140px; padding-bottom: 140px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div id="div1" class="row rounded text-center"
+                     style="background-color: #4e57d4; padding-top: 10px; margin-bottom: 20px; padding-bottom: 10px;">
+                    <a class="fs-5 fw-bolder" style="color: white;"> Đối tượng </a>
+                </div>
+                <div class="row rounded text-center"
+                     style="background-color: #4e57d4; padding-top: 10px; margin-bottom: 20px; padding-bottom: 10px;">
+                    <a class="fs-5 fw-bolder" style="color: white;"> Thời lượng khóa học </a>
+                </div>
+                <div class="row rounded text-center"
+                     style="background-color: #4e57d4; padding-top: 10px; margin-bottom: 20px; padding-bottom: 10px;">
+                    <a class="fs-5 fw-bolder" style="color: white;"> Mục tiêu khóa học </a>
+                </div>
+           
+                <div class="row rounded text-center"
+                     style="background-color: #4e57d4; height:50px; padding-top: 10px; margin-bottom: 20px; padding-bottom: 10px;">
+                    <a class="fs-5 fw-bolder" style="color: white;"> Nội dung khóa học </a>
+                </div>
+            </div>
+            <div class="col-auto"> </div>
+            <div class="col-lg-8">
+                <div id="div2" class="row rounded"
+                     style="background-color: rgba(109, 195, 161, 0.28); padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                    <a class="fs-5" style="color:#000000; padding-bottom: 10px;">
+                        Dành cho học viên mất gốc hoàn toàn, mới bắt
+                        đầu học Tiếng Anh.
+                    </a>
+                </div>
+                <div class="row rounded"
+                     style="background-color: rgba(109, 195, 161, 0.28); padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                    <a class="fs-5" style="color:#000000; padding-bottom: 10px;"> 40 buổi (2 buổi/ tuần trong 5 tháng). </a>
+                </div>
+                <div class="row rounded"
+                     style="background-color: rgba(109, 195, 161, 0.28); padding-top: 10px; margin-bottom: 20px; padding-left: 10px;">
+                    <a class="fs-5" style="color:#000000; padding-bottom: 10px;">
+                        Củng cố nền tảng ngữ pháp và trau dồi từ vựng,
+                        bước đầu làm quen với
+                        phát âm.
+                    </a>
+                </div>
+               
+                <div class="row rounded"
+                     style="background-color: rgba(109, 195, 161, 0.28); padding-top: 10px; margin-bottom: 20px; padding-left: 10px; display: flex;">
+                    <ul class="fs-5" style="color:#000000; margin-left: 20px;">
+                        <li> Cách sử dụng 6 thì tiếng Anh cơ bản thường dùng. </li>
+                        <li> Cách viết câu đơn, câu tiếng anh ngắn và vận dụng vào văn nói/viết. </li>
+                        <li> Phân biệt danh từ, động từ, tính từ, trạng từ và các quy tắc trật từ tự từ trong <br> câu. </li>
+                        <li> Luyện đọc các bài viết tiếng anh đơn giản, đọc hiểu-đoán nghĩa. </li>
+                        <li> Tập làm quen các dạng bài tập về nối từ, viết từ cơ bản, chọn trắc nghiệm. </li>
+                        <li> Tập nghe qua các bài nói ngắn. </li>
+                        <li> Dạng bài tập liên quan đến đánh vần, số thứ tự, số đếm… </li>
+                        <li> Tập trung làm quen phát âm (nguyên âm, phụ âm) và những lỗi sai học sinh <br> hay gặp.</li>
+                        <li>
+                            Cách phát âm của 44 âm IPA (International Phonetic Alphabet), gồm có 20 (vowel sounds) và 24 phụ âm
+                            (consonant sounds).
+                        </li>
+                        <li> Phương pháp Shadowing. </li>
+                        <li> Phát triển tư duy khi trả lời câu hỏi Speaking part 1.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

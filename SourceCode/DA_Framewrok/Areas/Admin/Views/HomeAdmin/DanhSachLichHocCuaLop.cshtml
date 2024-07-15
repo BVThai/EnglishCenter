@@ -1,0 +1,73 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<DA_Framewrok.Models.Lichhoccualop>
+
+@{
+    ViewData["Title"] = "DanhSachLichHocCuaLop";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh sách lịch học của các lớp</h1>
+
+@if (TempData["SuccessUpdateMessage"] != null)
+{
+        <div class="alert alert-success">
+        @TempData["SuccessUpdateMessage"]
+        </div>
+}
+@if (TempData["SuccessDeleteMessage"] != null)
+{
+        <div class="alert alert-success">
+        @TempData["SuccessDeleteMessage"]
+        </div>
+}
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr class="table-danger">
+                <th>
+                    Tên khóa học
+                </th>
+                <th>
+                    Tên lớp học
+                </th>
+                <th>
+                    Thứ
+                </th>
+                <th>
+                   Giờ bắt đầu
+                </th>
+                <th>
+                    Giờ kết thúc
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr class="table-primary">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MakhoahocNavigation.Tenkhoahoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MalophocNavigation.Tenlophoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giobatdau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gioketthuc)
+                </td>
+                <td>
+                    <a asp-action="SuaLichHocCuaLop" asp-route-malichhoc="@item.Malichhoc">Edit</a> |
+                    
+                    <a asp-action="XoaLichHocCuaLop" asp-route-malichhoc="@item.Malichhoc">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

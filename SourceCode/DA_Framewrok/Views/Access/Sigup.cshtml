@@ -1,0 +1,132 @@
+﻿@model DA_Framewrok.Models.Hocvien
+
+@{
+    ViewData["Title"] = "Sigup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/sigup.css">
+
+
+
+@* <div class="row">
+    <div class="col-md-4">
+        <form asp-action="Sigup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Mahocvien" class="control-label"></label>
+                <input asp-for="Mahocvien" class="form-control" />
+                <span asp-validation-for="Mahocvien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tenhocvien" class="control-label"></label>
+                <input asp-for="Tenhocvien" class="form-control" />
+                <span asp-validation-for="Tenhocvien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaysinh" class="control-label"></label>
+                <input asp-for="Ngaysinh" class="form-control" />
+                <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sodienthoai" class="control-label"></label>
+                <input asp-for="Sodienthoai" class="form-control" />
+                <span asp-validation-for="Sodienthoai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Matkhau" class="control-label"></label>
+                <input asp-for="Matkhau" class="form-control" />
+                <span asp-validation-for="Matkhau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tinhtrang" class="control-label"></label>
+                <input asp-for="Tinhtrang" class="form-control" />
+                <span asp-validation-for="Tinhtrang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div> *@
+<div data-aos="fade-up" class="container d-flex justify-content-center align-items-center min-vh-100">
+    <!----------------------- Login Container -------------------------->
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <!--------------------------- Left Box ----------------------------->
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box order-sm-1"
+             style="background: #ffffff;">
+            <div class="featured-image mb-3">
+                <img src="~/css/20547283_6310507.jpg" class="img-fluid rounded w-100" style="width: 250px;">
+            </div>
+            <!--<p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">Be Verified</p>
+            <small class="text-white text-wrap text-center" style="width: 17rem;font-family: 'Courier New', Courier, monospace;">Join experienced Designers on this platform.</small>-->
+        </div>
+        <!-------------------- ------ Right Box ---------------------------->
+        <div class="col-md-6 right-box border-end">
+            <div class="row align-items-center">
+                <div class="header-text mb-4 text-center">
+                    <h2>Đăng ký</h2>
+                    <small>Đăng ký theo các bước sau để tạo tài khoản</small>
+                </div>
+                <form asp-action="Sigup">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="input-group mb-3">
+                            <input type="text"  asp-for="Tenhocvien" class="form-control form-control-lg bg-light fs-6 mb-1"
+                               placeholder="Họ và tên">
+                    </div>
+                    <div class="input-group mb-3 date">
+                        <input asp-for="Ngaysinh" type="text" class="form-control form-control-lg bg-light fs-6 mb-1" id="datepicker"
+                               placeholder="Ngày sinh">
+                        
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+                    <!-- Include Flatpickr -->
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css" />
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            flatpickr("#datepicker", {
+                                dateFormat: "d-m-Y",
+                                onChange: function (selectedDates, dateStr, instance) {
+                                    $("#datepicker input").val(dateStr);
+                                }
+
+                            });
+                        });
+                    </script>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="Email" class="form-control form-control-lg bg-light fs-6 mb-1" placeholder="Email">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" asp-for="Sodienthoai" class="form-control form-control-lg bg-light fs-6 mb-1"
+                               placeholder="Số điện thoại">
+                    </div>
+                    <div class="input-group mb-1">
+                        <input type="password" asp-for="Matkhau" class="form-control form-control-lg bg-light fs-6 mb-3"
+                               placeholder="Mật khẩu">
+                    </div>
+                    <div class="input-group mb-1">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6 mb-4"
+                               placeholder="Nhập lại mật khẩu">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="submit" value="ĐĂNG KÝ" class="btn btn-lg btn-primary w-100 fs-6 rounded-2" />
+                    </div>
+                </form>
+                <div class="row">
+                    <small>Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
